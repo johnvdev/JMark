@@ -1,5 +1,4 @@
-﻿import  JMarkMaps  from "./JMaps.js"
-import  JMarkEditor  from "./JMarkEditor.js"
+﻿import  JMarkEditor  from "./JMarkEditor.js"
 
 class JMark {
     constructor() {
@@ -7,13 +6,15 @@ class JMark {
         this.jmarkOutputs = []
     }
 
-    addEditor(selector, config) {
-        var newEditor = new JMarkEditor(selector, config);
-        jmarkEditors.push(newEditor);
+    addEditor(querySelector, config) {
+        var newEditor = new JMarkEditor(querySelector, config);
+        this.jmarkEditors.push(newEditor);
+
+        return newEditor;
     }
 
-    addHtmlOutput(selector, config) {
-
+    getEditor(editorName){
+        return this.jmarkEditors.find(x => x.configuration.editorName === editorName)
     }
 }
 
